@@ -10,6 +10,7 @@ namespace CrowdLending.Models
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string CoverImageSrc { get; set; }
         public UserEntity Owner { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
         public decimal RequestedAmount { get; set; }

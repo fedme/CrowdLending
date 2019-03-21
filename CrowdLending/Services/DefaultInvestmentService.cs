@@ -61,6 +61,9 @@ namespace CrowdLending.Services
                 Amount = amount
             });
 
+            // Update project collected money
+            project.CollectedAmount += amount;
+
             var created = await _context.SaveChangesAsync();
             if (created < 1) throw new InvalidOperationException("Could not save investment.");
 

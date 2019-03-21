@@ -12,8 +12,12 @@ namespace CrowdLending.Models
     {
         [JsonProperty]
         public string FirstName { get; set; }
+
         [JsonProperty]
         public string LastName { get; set; }
+
+        [JsonProperty]
+        public string AvatarSrc { get; set; }
 
         public DateTimeOffset CreatedAt { get; set; }
     }

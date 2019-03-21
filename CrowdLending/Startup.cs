@@ -40,6 +40,10 @@ namespace CrowdLending
                 options.UseOpenIddict<Guid>();
             });
 
+            // CORS TODO: change policy in production
+            services.AddCors(options => options.AddPolicy("DebugPolicy",
+                policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials()));
+
             // Add OpenIddict auth server
             AddOpenIddict(services);
 
@@ -77,9 +81,6 @@ namespace CrowdLending
                 };
             });
 
-            // CORS TODO: change policy in production
-            services.AddCors(options => options.AddPolicy("DebugPolicy", 
-                policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -97,6 +98,10 @@ namespace CrowdLending
             // Register the Swagger generator and the Swagger UI middlewares
             app.UseSwagger();
             app.UseSwaggerUi3();
+
+            // Add CORS
+            app.UseCors("DebugPolicy");
+            
 
             // Add authentication
             app.UseAuthentication();
@@ -135,6 +140,7 @@ namespace CrowdLending
 
                     options.AllowPasswordFlow();
                     options.AcceptAnonymousClients();
+
                 })
                 .AddValidation();
 
