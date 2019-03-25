@@ -182,7 +182,7 @@ namespace CrowdLending.Database
                 Description = "We will use the money to open a new branch in the center of Berlin.",
                 CoverImageSrc = "https://www.thelocal.de/userdata/images/article/cb964e6f592a0abb65c7cc19f14d59a96ca0af995d2ec371812dd6c41b202d34.jpg",
                 RequestedAmount = 500000m,
-                CollectedAmount = 499000m,
+                CollectedAmount = 436000m,
                 Owner = lisa,
                 CreatedAt = DateTimeOffset.UtcNow
             });

@@ -74,9 +74,9 @@ namespace CrowdLending.Services
         {
             // Check that user has not invested in the project already
             var userInvestments = await GetInvestmentsByUserAsync(user);
-            if (userInvestments.Any(i => i.Investor == user))
+            if (userInvestments.Any(i => i.Project == project))
             {
-                return (false, "Current user has already invested in this project.");
+                return (false, "You have already invested in this project.");
             }
 
             // Check if Project is already funded
