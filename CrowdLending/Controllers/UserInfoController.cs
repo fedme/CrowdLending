@@ -42,7 +42,8 @@ namespace CrowdLending.Controllers
                 FamilyName = user.LastName,
                 GivenName = user.FirstName,
                 Subject = user.Id.ToString(),
-                Email = user.Email
+                Email = user.Email,
+                AvatarSrc = user.AvatarSrc
             };
 
             return Ok(response);

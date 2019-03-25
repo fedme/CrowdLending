@@ -11,5 +11,6 @@ namespace CrowdLending.Services
         Task<IEnumerable<InvestmentEntity>> GetInvestmentsByProjectIdAsync(Guid projectId);
         Task<IEnumerable<InvestmentEntity>> GetInvestmentsByUserAsync(UserEntity user);
         Task<Guid> CreateInvestmentAsync(Guid userId, Guid projectId, decimal amount);
+        Task<(bool, string)> IsProjectInvestmentValid(ProjectEntity project, UserEntity user, decimal amount);
     }
 }

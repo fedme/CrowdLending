@@ -80,29 +80,17 @@ namespace CrowdLending.Controllers
             var project = await _projectService.GetProjectAsync(projectId);
             if (project == null) return NotFound();
 
-            // Check that user has not invested in the project already
-            var userInvestments = await _investmentService.GetInvestmentsByUserAsync(user);
-            if (userInvestments.Any(i => i.Investor == user))
+            var (isValidInvestment, errorMsg) = await _investmentService.IsProjectInvestmentValid(project, user, form.Amount);
+
+            if (isValidInvestment)
             {
-                return BadRequest(new ApiError("Current user has already invested in this project."));
+                // Create investment
+                var investmentId = await _investmentService.CreateInvestmentAsync(user.Id, project.Id, form.Amount);
+                return Created(investmentId.ToString(), null); // TODO: return url to created investment
             }
 
-            // Check if Project is already funded
-            if (project.CollectedAmount >= project.RequestedAmount)
-            {
-                return BadRequest(new ApiError("Project is already fully funded."));
-            }
-
-            // Check that amount is not too big
-            if (form.Amount > (project.RequestedAmount - project.CollectedAmount))
-            {
-                return BadRequest(new ApiError("Amount to invest is greater than remaining request."));
-            }
-
-            // Create investment
-            var investmentId = await _investmentService.CreateInvestmentAsync(user.Id, project.Id, form.Amount);
-
-            return Created(investmentId.ToString(), null); // TODO: return url to created investment
+            return BadRequest(errorMsg);
+            
         }
     }
 }

@@ -20,5 +20,8 @@ namespace CrowdLending.Models
 
         [JsonProperty(PropertyName = OpenIdConnectConstants.Claims.Email)]
         public string Email { get; set; }
+
+        [JsonProperty(PropertyName = OpenIdConnectConstants.Claims.Picture)]
+        public string AvatarSrc { get; set; }
     }
 }

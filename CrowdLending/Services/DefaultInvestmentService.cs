@@ -69,5 +69,29 @@ namespace CrowdLending.Services
 
             return id;
         }
+
+        public async Task<(bool, string)> IsProjectInvestmentValid(ProjectEntity project, UserEntity user, decimal amount)
+        {
+            // Check that user has not invested in the project already
+            var userInvestments = await GetInvestmentsByUserAsync(user);
+            if (userInvestments.Any(i => i.Investor == user))
+            {
+                return (false, "Current user has already invested in this project.");
+            }
+
+            // Check if Project is already funded
+            if (project.CollectedAmount >= project.RequestedAmount)
+            {
+                return (false, "Project is already fully funded.");
+            }
+
+            // Check that amount is not too big
+            if (amount > (project.RequestedAmount - project.CollectedAmount))
+            {
+                return (false, "Amount to invest is greater than remaining request.");
+            }
+
+            return (true, null);
+        }
     }
 }
