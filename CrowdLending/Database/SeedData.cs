@@ -178,9 +178,9 @@ namespace CrowdLending.Database
             ctx.Projects.Add(new ProjectEntity
             {
                 Id = Guid.Parse("2645611c-fc12-4153-a48a-fdc131673d66"),
-                Name = "Found our new Berlin office",
+                Name = "Fund our new Berlin office",
                 Description = "We will use the money to open a new branch in the center of Berlin.",
-                CoverImageSrc = "https://www.riotgames.com/darkroom/1440/c2f185cb48161e1bb6c6fea45257bdcb:dfdab8b9364f007f0fd96be0b1cf52be/berlin.jpg",
+                CoverImageSrc = "https://www.thelocal.de/userdata/images/article/cb964e6f592a0abb65c7cc19f14d59a96ca0af995d2ec371812dd6c41b202d34.jpg",
                 RequestedAmount = 500000m,
                 CollectedAmount = 499000m,
                 Owner = lisa,
