@@ -158,7 +158,7 @@ namespace CrowdLending.Database
                 Name = "Build a new park in our city",
                 Description = "Help us build a new amazing park in our city!",
                 CoverImageSrc = "https://res.cloudinary.com/simpleview/image/upload/crm/kelowna/Kinsmen-Park-Benches-40ad334c5056a36_40ad3bce-5056-a36a-0b358f00dbd24259.jpg",
-                RequestedAmount = 200000m,
+                RequestedAmount = 20000m,
                 CollectedAmount = 15000m,
                 Owner = john,
                 CreatedAt = DateTimeOffset.UtcNow
@@ -181,8 +181,8 @@ namespace CrowdLending.Database
                 Name = "Fund our new Berlin office",
                 Description = "We will use the money to open a new branch in the center of Berlin.",
                 CoverImageSrc = "https://www.thelocal.de/userdata/images/article/cb964e6f592a0abb65c7cc19f14d59a96ca0af995d2ec371812dd6c41b202d34.jpg",
-                RequestedAmount = 500000m,
-                CollectedAmount = 436000m,
+                RequestedAmount = 50000m,
+                CollectedAmount = 43000m,
                 Owner = lisa,
                 CreatedAt = DateTimeOffset.UtcNow
             });
